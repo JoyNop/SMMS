@@ -1,7 +1,7 @@
 {
   "name": "smmsupdate",
   "version": "0.1.0",
-  "homepage" : "https://joynop.github.io/SMMS/docs",
+  "homepage" : "https://joynop.github.io/SMMS/",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
