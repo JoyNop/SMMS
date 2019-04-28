@@ -2,11 +2,9 @@ import * as React from 'react';
 import './App.css';
 import { Button, } from 'react-bootstrap';
 import axios from 'axios';
-interface IImgProps {
-  imgInfo: Array<any>
-}
+ 
 
-export class ImgList extends React.Component<IImgProps> {
+export class ImgHistoryList extends React.Component  {
 
   private imgList: Array<any> = [
     // {
@@ -70,7 +68,7 @@ export class ImgList extends React.Component<IImgProps> {
     console.log(config);
     console.log(request);
     // 200
-    debugger
+ 
     if (status == 200) {
       this.imgList.splice(index, 1);
 
@@ -78,32 +76,26 @@ export class ImgList extends React.Component<IImgProps> {
     this.setState({})
   }
 
-  // private getImg = async () => {
-  //   let { data, status, statusText, headers, config, request } = await
-  //     axios.get('https://sm.ms/api/list');
-  //   console.log(data);
-  //   console.log(status);
-  //   console.log(statusText);
-  //   console.log(headers);
-  //   console.log(config);
-  //   console.log(request);
-  //   this.setState({})
-  // }
-
-
-  public componentWillReceiveProps(nextProps: Readonly<IImgProps>) {
-    if (nextProps.imgInfo != this.props.imgInfo) {
-      this.imgList = nextProps.imgInfo
-    }
-
+  private getImg = async () => {
+    let { data, status, statusText, headers, config, request } = await
+      axios.get('https://sm.ms/api/list');
+    console.log(data);
+    console.log(status);
+    console.log(statusText);
+    console.log(headers);
+    console.log(config);
+    console.log(request);
+    this.imgList=data.data
+    debugger
     this.setState({})
   }
 
 
+ 
+
+
   public componentDidMount() {
-    this.imgList = this.props.imgInfo
-    console.log(this.imgList);
-    this.setState({})
+    this.getImg()
   }
 
 }
