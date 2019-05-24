@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@types/react-copy-to-clipboard": "^4.2.6",
+    "antd": "^3.18.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "react": "^16.8.6",
