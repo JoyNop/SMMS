@@ -29,9 +29,9 @@ class App extends React.Component {
           <Content style={{ padding: '0 50px' }}>
             <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
               <Switch>
-                <Route path="/" exact component={SMMSIndex} />
-                <Route path="/api" exact component={SMMSApi} />
-                <Route path="/about" exact component={SMMSAbout} />
+                <Route path="/SMMS/" exact component={SMMSIndex} />
+                <Route path="/SMMS/api" exact component={SMMSApi} />
+                <Route path="/SMMS/about" exact component={SMMSAbout} />
                 <Route component={SMMSError} />
               </Switch>
             </div>
