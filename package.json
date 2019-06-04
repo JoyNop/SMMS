@@ -1,6 +1,7 @@
 {
   "name": "smms",
   "version": "0.1.0",
+  "homepage": "https://joynop.github.io/SMMS/",
   "private": true,
   "dependencies": {
     "@loadable/component": "^5.10.1",
