@@ -1,6 +1,16 @@
 import * as React from 'react'
 import axios from "axios";
-export class SMMSUpdate extends React.Component {
+import { Modal, Button, Alert, Input, Icon, } from 'antd';
+import * as copy from 'copy-to-clipboard';
+const Search = Input.Search;
+
+interface IUpload {
+  upload: (list: any) => void
+}
+export class SMMSUpload extends React.Component<IUpload> {
+  private visible: boolean = false
+  private uploadUrl: string = ''
+  private isCopy: boolean = false
   render() {
     return (
       <div className="ant-upload ant-upload-drag">
@@ -21,16 +31,72 @@ export class SMMSUpdate extends React.Component {
               </i>
             </p>
             <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+            <p className="ant-upload-hint">5 MB max per file. 1 files max per request.</p>
           </div>
         </div>
+
+        <Modal
+          title="系统消息:上传成功!"
+          visible={this.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={[
+            // <Button key="back" onClick={this.handleCancel}>
+            //   Return
+            // </Button>,
+            // <Button key="submit" type="primary"   onClick={this.handleOk}>
+            //   Submit
+            // </Button>,
+          ]}
+        >
+          {this.isCopy ? <Alert
+            message="成功复制到粘贴板!"
+            description="现在您可以将链接粘贴到其他地方:)"
+            type="success"
+            showIcon
+          /> : <Alert
+              message='您可以在此处复制该图片链接'
+              description="点击[复制]按钮,一键复制到粘贴板."
+              type="info"
+              showIcon
+            />
+          }
+
+          <Search
+            style={{ marginTop: '20px' }}
+            enterButton={
+              <Icon type="copy" />
+            }
+            size="large"
+            defaultValue={this.uploadUrl}
+            onSearch={value => this.copyUrl(value)}
+          />
+        </Modal>
       </div>
     )
   }
 
+  private copyUrl = (url: string) => {
+    copy(this.uploadUrl, {
+      debug: true,
+      message: 'Press #{key} to copy',
+    });
+    this.isCopy = true
+    this.setState({})
+  }
+
+  private handleOk = () => {
+    this.visible = false
+    this.setState({});
+  };
+
+  private handleCancel = () => {
+    this.visible = !this.visible
+    this.setState({});
+  }
+
 
   private handleDragOver = (e: any) => {
-    console.log(e);
     try {
       if ('preventDefault' in e) {
         e.stopPropagation();
@@ -48,20 +114,17 @@ export class SMMSUpdate extends React.Component {
     }
     const files = e.target.files || e.dataTransfer.files;
     const fileList = Object.keys(files).map(file => files[file]);
-    console.log(files);
     if (fileList.length > 0) {
-      this.updateImg(fileList[0])
+      this.uploadImg(fileList[0])
     }
   }
 
-  private updateImg = (FileInfo: any) => {
-    console.log(FileInfo);
+  private uploadImg = (FileInfo: any) => {
     let fileData = new FormData() //待提交空formdata
     if (FileInfo == null) {
       return;
     }
     fileData.append('smfile', FileInfo)
-    console.log(fileData);
     let config = {
       // headers:{'Content-Type':'multipart/form-data'}
       headers: {
@@ -72,17 +135,16 @@ export class SMMSUpdate extends React.Component {
 
     axios.post('https://sm.ms/api/upload', fileData, config)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
         if (res.data.code == 'success') {
-          // this.imgList.push(res.data.data)
-          this.setState({})
+          this.uploadUrl = res.data.data.url
+
+          this.props.upload(res.data.data)
+          this.handleCancel()
         }
       })
       .catch(err => {
         console.log(err);
       })
-
   }
 
 }
