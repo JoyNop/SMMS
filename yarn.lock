@@ -83,6 +83,13 @@
   resolved "https://registry.npm.taobao.org/@types/json5/download/@types/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/loadable__component@^5.9.0":
+  version "5.9.0"
+  resolved "https://registry.npm.taobao.org/@types/loadable__component/download/@types/loadable__component-5.9.0.tgz#6c59ccbfa49329d227f74d0c49002888a11a817d"
+  integrity sha1-bFnMv6STKdIn900MSQAoiKEagX0=
+  dependencies:
+    "@types/react" "*"
+
 "@types/node@^12.0.4":
   version "12.0.4"
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-12.0.4.tgz#46832183115c904410c275e34cf9403992999c32"
