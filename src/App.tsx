@@ -1,14 +1,39 @@
-import * as React from 'react';
- 
+import * as React from 'react'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
+import { Store } from 'redux'
+import { History } from 'history'
+// import { ThemeProvider } from 'emotion-theming'
 
-class App extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        55555555555555555
-      </div>
-    );
-  }
+import Routes from './routes'
+import { ApplicationState } from './store'
+// import * as themes from './styles/theme'
+// import LayoutContainer from './containers/LayoutContainer'
+
+// Any additional component props go here.
+interface MainProps {
+  store: Store<ApplicationState>
+  history: History
 }
 
-export default App;
+// Create an intersection type of the component props and our Redux props.
+const App: React.FC<MainProps> = ({ store, history }) => {
+  return (
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        {/* <LayoutContainer>
+          {({ theme }) => (
+            <ThemeProvider theme={themes[theme]}> */}
+              <Routes />
+            {/* </ThemeProvider>
+          )}
+        </LayoutContainer> */}
+      </ConnectedRouter>
+    </Provider>
+  )
+}
+
+// Normally you wouldn't need any generics here (since types infer from the passed functions).
+// But since we pass some props from the `index.js` file, we have to include them.
+// For an example of a `connect` function without generics, see `./containers/LayoutContainer`.
+export default App
