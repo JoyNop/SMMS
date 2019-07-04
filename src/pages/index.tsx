@@ -1,11 +1,10 @@
-import *as React from 'react'
-
+import * as React from "react"
+import{Button} from 'antd'
 export class Index extends React.Component {
   render() {
-    return (
-      <div>
-        44444444444444
-        </div>
-    )
+    return <div>
+      {/* <NavBar /> */}
+      <Button>嘿嘿嘿嘿嘿</Button>
+    </div>
   }
 }
