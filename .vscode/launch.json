@@ -1,0 +1,37 @@
+// {
+//   "version": "0.2.0",
+//   "configurations": [
+//     {
+//       "name": "Chrome",
+//       "type": "chrome",
+//       "request": "launch",
+//       "url": "http://localhost:3000",
+//       "webRoot": "${workspaceFolder}/src",
+//       "sourceMapPathOverrides": {
+//         "webpack:///src/*": "${webRoot}/*"
+//       }
+//     }
+//   ]
+// }
+
+
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Main Process",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+      },
+      "args": [
+        "."
+      ],
+      "outputCapture": "std"
+    }
+  ]
+}

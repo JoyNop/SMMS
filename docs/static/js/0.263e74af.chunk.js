@@ -1,2 +1,0 @@
-webpackJsonp([0],{1085:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=t(49),u=t(0),o=(t.n(u),function(e){function n(){return null!==e&&e.apply(this,arguments)||this}return r.a(n,e),n.prototype.render=function(){return u.createElement("div",null,"SMMSApi")},n}(u.Component));n.default=o}});
-//# sourceMappingURL=0.263e74af.chunk.js.map
