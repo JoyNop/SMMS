@@ -1,6 +1,7 @@
 export interface IUserLogin {
   username: string; //	用户名 / 邮件地址
   password: string; //	密码
+  remember?: boolean;
 }
 
 interface IImgItemBody {

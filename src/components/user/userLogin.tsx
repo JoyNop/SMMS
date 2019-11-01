@@ -7,16 +7,17 @@ class NormalLoginForm extends React.Component {
   private smmsAPI = new SMMSAPI();
   handleSubmit = (e: any) => {
     e.preventDefault();
-
     let form: any = this.props;
-    form.form.validateFields(async (err: any, values: any) => {
+    form.form.validateFields(async (err: any, values: IUserLogin) => {
+      console.log(values);
+
       if (!err) {
         try {
-          const userSuccess = await this.smmsAPI.smmsLogin(values);
+          const userSuccess = await this.smmsAPI.smmsHistory();
           const userSuccessInfo: IUserBody = userSuccess.data;
           message.success(`你好${userSuccessInfo.username}，欢迎回来~！`);
         } catch (userError) {
-          message.warn(userError.response.data.message);
+          message.warn(userError.response);
         }
       } else {
         console.log(err);

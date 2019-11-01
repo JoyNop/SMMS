@@ -1,6 +1,6 @@
 const configTemplate = {
   development: {
-    baseUrl: "http://localhost:4000/"
+    baseUrl: "https://sm.ms/api"
   },
   production: {
     baseUrl: "https://sm.ms/api"

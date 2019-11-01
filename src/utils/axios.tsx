@@ -1,16 +1,13 @@
 import axios from "axios";
-import { buildConfig } from "../config";
 import { message } from "antd";
-
-//请求路径
-//测试路径(本地)
-
-axios.defaults.baseURL = buildConfig.baseUrl;
-
+import { axiosConfig } from "../config";
+axios.defaults.baseURL = axiosConfig.baseURL;
+axios.defaults.headers = axiosConfig.headers;
+// axios.defaults.withCredentials = axiosConfig.withCredentials
 if (process.env.NODE_ENV === "development") {
   console.warn("API环境:" + axios.defaults.baseURL);
 }
-
+console.log(axios.defaults);
 // 请求拦截
 axios.interceptors.request.use(
   config => {

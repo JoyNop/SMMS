@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.less";
-import { SMMSLogin } from "./routers/index";
+import { SMMSLogin, Home } from "./routers/index";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import { SiderLayout } from "./layout";
+import { MainLayout } from "./layout";
 import { PrivateRoute } from "./utils/privateRoutes";
 
 class App extends React.Component {
@@ -14,10 +14,10 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/login" component={SMMSLogin} />
             {/* <Route exact path='/signin' component={DbCloudSignin} /> */}
-            {/* <SiderLayout {...this.props}>
-              <PrivateRoute isSignIn={false} exact path='/' component={Home} />
-              <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} />
-            </SiderLayout> */}
+            <MainLayout {...this.props}>
+              <PrivateRoute isSignIn={true} exact path="/" component={Home} />
+              {/* <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} /> */}
+            </MainLayout>
             {/* <Route render={() => {
                 return <p>Not Found</p>
               }} /> */}
