@@ -1,9 +1,9 @@
 import axios from "axios";
 import { message } from "antd";
-import { axiosConfig } from "../config";
-axios.defaults.baseURL = axiosConfig.baseURL;
-axios.defaults.headers = axiosConfig.headers;
-// axios.defaults.withCredentials = axiosConfig.withCredentials
+// import { axiosConfig } from "../config";
+// // axios.defaults.baseURL = axiosConfig.baseURL;
+// // axios.defaults.headers = axiosConfig.headers;
+// // axios.defaults.withCredentials = axiosConfig.withCredentials
 if (process.env.NODE_ENV === "development") {
   console.warn("API环境:" + axios.defaults.baseURL);
 }
