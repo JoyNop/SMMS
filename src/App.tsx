@@ -8,6 +8,7 @@ import { PrivateRoute } from "./utils/privateRoutes";
 
 class App extends React.Component {
   render() {
+    const isLogin = true;
     return (
       <React.Fragment>
         <Router>
@@ -15,7 +16,12 @@ class App extends React.Component {
             <Route exact path="/login" component={SMMSLogin} />
             {/* <Route exact path='/signin' component={DbCloudSignin} /> */}
             <MainLayout {...this.props}>
-              <PrivateRoute isSignIn={true} exact path="/" component={Home} />
+              <PrivateRoute
+                isSignIn={isLogin}
+                exact
+                path="/"
+                component={Home}
+              />
               {/* <PrivateRoute isSignIn={true} exact path='/feedback' component={FeedBack} /> */}
             </MainLayout>
             {/* <Route render={() => {

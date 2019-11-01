@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const { Header, Footer, Content } = Layout;
 export class MainLayout extends React.Component {
-  // private layoutConfig = new layoutConfig()
+  private layoutConfig = new layoutConfig();
 
   render() {
     console.log(this.props);
@@ -22,9 +22,9 @@ export class MainLayout extends React.Component {
             defaultSelectedKeys={["2"]}
             className={Style.menu}
           >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
+            {layoutConfig.menu.map((menuItem, index) => (
+              <Menu.Item key={index}>{menuItem.name}</Menu.Item>
+            ))}
           </Menu>
         </Header>
         <Content className={Style.content_container}>

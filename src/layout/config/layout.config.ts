@@ -1,9 +1,9 @@
 import { Ilayout } from "./layout.interface";
 export class layoutConfig {
-  public static leftMenu: Array<Ilayout> = [
-    { name: "联系人", link: "/friends", icon: "user" },
-    { name: "对话", link: "/chat", icon: "message" },
-    { name: "设置", link: "/setting", icon: "setting" },
-    { name: "反馈", link: "/feedback", icon: "bug" }
+  public static menu: Array<Ilayout> = [
+    { name: "Home", link: "/", icon: "home" },
+    { name: "About", link: "/about", icon: "about" },
+    { name: "Contact", link: "/contact", icon: "contact" }
+    // { name: "反馈", link: "/feedback", icon: "bug" }
   ];
 }
