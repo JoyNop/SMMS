@@ -9,15 +9,22 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     let form: any = this.props;
     form.form.validateFields(async (err: any, values: IUserLogin) => {
-      let a = { username: values.username, password: values.password };
-      console.log(a);
+      const loginUser = {
+        username: values.username,
+        password: values.password
+      };
       if (!err) {
         try {
-          const userSuccess = await this.smmsAPI.smmsLogin(a);
+          const userSuccess = await this.smmsAPI.smmsLogin(loginUser);
           console.log(userSuccess);
+          if (!userSuccess.data.success) {
+            message.warn(userSuccess.data.message);
+          }
 
-          const userSuccessInfo: IUserBody = userSuccess.data;
-          message.success(`你好${userSuccessInfo.username}，欢迎回来~！`);
+          // const userSuccessInfo: IUserBody = userSuccess.data;
+          // console.log(userSuccessInfo);
+
+          // message.success(`你好${loginUser.username}，欢迎回来~！`);
         } catch (userError) {
           message.warn(userError.response);
         }

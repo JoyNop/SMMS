@@ -36,7 +36,7 @@ export class MainLayout extends React.Component {
           <div className={Style.content}>{children}</div>
         </Content>
         <Footer className={Style.footer}>
-          Ant Design ©2018 Created by Ant UED
+          SMMS ©2019 CREATED BY JOYNOP.COM
         </Footer>
       </Layout>
     );

@@ -6,6 +6,6 @@ export class SMMSAPI {
     return axios.post("api/v2/token", user);
   };
   public smmsHistory = () => {
-    return axios.get("api//v2/history");
+    return axios.get("api/v2/history");
   };
 }

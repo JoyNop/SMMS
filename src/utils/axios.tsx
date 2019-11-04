@@ -28,10 +28,12 @@ axios.interceptors.response.use(
   error => {
     // 错误提醒
     try {
+      console.log(error);
+
       message.error(error.toString());
       return Promise.reject(error);
     } catch (error) {
-      // console.log(error)
+      console.log(error);
       message.error(error.toString());
     }
   }

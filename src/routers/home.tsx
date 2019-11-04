@@ -1,7 +1,12 @@
-import React, { Component } from "react";
+import * as React from "react";
+import { SMMSUpload } from "../components";
 
-export class Home extends Component {
+export class Home extends React.Component {
   render() {
-    return <div>222</div>;
+    return (
+      <div>
+        <SMMSUpload />
+      </div>
+    );
   }
 }
