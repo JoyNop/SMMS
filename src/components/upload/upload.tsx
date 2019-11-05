@@ -1,18 +1,16 @@
 import * as React from "react";
-import { Upload, Icon } from "antd";
+import { Upload, Icon, message } from "antd";
 import _ from "lodash";
 import axios from "axios";
-import { RcUpload, CustomRequest } from "../../interfaces";
+import { RcUpload, CustomRequest, SMMS_V2_PicReq } from "../../interfaces";
 import { SMMSAPI } from "../../config";
 import * as Style from "./upload.module.less";
 import { UploadFile } from "antd/lib/upload/interface";
-import { UploadList } from "./uploadList";
 
 const { Dragger } = Upload;
 
 export class SMMSUpload extends React.Component {
   private SMMSAPI = new SMMSAPI();
-  private listService = new UploadList();
   private fileList: Array<UploadFile> = [];
 
   private configImage = () => {
@@ -30,25 +28,38 @@ export class SMMSUpload extends React.Component {
         console.log("statr");
 
         _this.getBase64(file).then(res => {
-          debugger;
           let imgItem: UploadFile = file;
           imgItem.thumbUrl = res as string;
+          imgItem.status = "uploading";
           console.log(res);
           _this.fileList = _.concat(_this.fileList, [imgItem]);
           console.log(_this.fileList);
           _this.setState({});
         });
       },
-      onSuccess(ret: any, file: UploadFile) {
+      onSuccess(ret: SMMS_V2_PicReq, file: UploadFile) {
         console.log(ret);
-        console.log("onSuccess");
+        if (ret.success) {
+          _this.fileList[_this.fileList.length - 1].url = ret.data.url;
+          _this.fileList[_this.fileList.length - 1].status = "success";
+          console.log("onSuccess");
+          _this.setState({});
+        } else {
+          message.warn(ret.message);
+        }
       },
       onError(err: Error) {
         console.log("onError", err);
       },
       onProgress(percent: { percent: any }, file: UploadFile) {
         console.log("onProgress", `${percent.percent}%`, file.name);
-        // _this.fileList[5]
+        const nowPercent: number = Number(percent.percent);
+
+        _this.fileList[_this.fileList.length - 1].percent = nowPercent;
+        if (nowPercent === 100) {
+          _this.fileList[_this.fileList.length - 1].status = "done";
+        }
+        _this.setState({});
       },
       customRequest(exReq: RcUpload) {
         let formData = new FormData();
@@ -105,6 +116,7 @@ export class SMMSUpload extends React.Component {
     return (
       <div className={Style.upload_container}>
         <Dragger
+          accept="image/*"
           {...this.configImage()}
           listType="picture"
           fileList={this.fileList}

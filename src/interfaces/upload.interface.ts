@@ -29,3 +29,21 @@ export interface RcUpload {
   onSuccess?: any;
   withCredentials?: boolean;
 }
+
+export interface SMMSFileInfo {
+  delete: string;
+  filename: string;
+  hash: string;
+  height: number;
+  ip: string;
+  path: string;
+  size: number;
+  storename: string;
+  timestamp: number;
+  url: string;
+  width: number;
+}
+
+interface SMMSFileList {
+  List: Array<SMMSFileInfo>;
+}

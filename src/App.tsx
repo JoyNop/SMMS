@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.less";
-import { SMMSLogin, SMMSHome, SMMSAbout } from "./routers/index";
+import { JOYSMMSLogin, JOYSMMSHome, JOYSMMSAbout } from "./routers/index";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MainLayout } from "./layout";
@@ -13,20 +13,20 @@ class App extends React.Component {
       <React.Fragment>
         <Router>
           <Switch>
-            <Route exact path="/login" component={SMMSLogin} />
+            <Route exact path="/login" component={JOYSMMSLogin} />
             {/* <Route exact path='/signin' component={DbCloudSignin} /> */}
             <MainLayout {...this.props}>
               <PrivateRoute
                 isSignIn={isLogin}
                 exact
                 path="/"
-                component={SMMSHome}
+                component={JOYSMMSHome}
               />
               <PrivateRoute
                 isSignIn={isLogin}
                 exact
-                path="/"
-                component={SMMSAbout}
+                path="/about"
+                component={JOYSMMSAbout}
               />
             </MainLayout>
             <Route
