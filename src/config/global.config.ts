@@ -1,9 +1,11 @@
 const configTemplate = {
   development: {
-    baseUrl: "https://sm.ms/api"
+    baseUrl: "https://sm.ms/api",
+    state: 0
   },
   production: {
-    baseUrl: "https://sm.ms/api"
+    baseUrl: "https://sm.ms/api",
+    state: 1
   }
 };
 

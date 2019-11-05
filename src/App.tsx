@@ -2,7 +2,7 @@ import React from "react";
 import "./App.less";
 import { JOYSMMSLogin, JOYSMMSHome, JOYSMMSAbout } from "./routers/index";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { MainLayout } from "./layout";
 import { PrivateRoute } from "./utils/privateRoutes";
 
