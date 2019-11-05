@@ -1,7 +1,7 @@
 import { Form, Icon, Input, Button, Checkbox, message } from "antd";
 import * as React from "react";
 import { SMMSAPI } from "../../config/smms.api";
-import { IUserBody, IUserLogin } from "../../interfaces/index";
+import { IUserLogin } from "../../interfaces/index";
 
 class NormalLoginForm extends React.Component {
   private smmsAPI = new SMMSAPI();
