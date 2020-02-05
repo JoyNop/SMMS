@@ -1,8 +1,13 @@
 import React from "react";
 import "./App.less";
-import { JOYSMMSLogin, JOYSMMSHome, JOYSMMSAbout } from "./routers/index";
+import {
+  JOYSMMSLogin,
+  JOYSMMSHome,
+  JOYSMMSAbout,
+  JOYSMMSHistory
+} from "./routers/index";
 
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MainLayout } from "./layout";
 import { PrivateRoute } from "./utils/privateRoutes";
 
@@ -27,6 +32,12 @@ class App extends React.Component {
                 exact
                 path="/about"
                 component={JOYSMMSAbout}
+              />
+              <PrivateRoute
+                isSignIn={isLogin}
+                exact
+                path="/history"
+                component={JOYSMMSHistory}
               />
             </MainLayout>
             <Route

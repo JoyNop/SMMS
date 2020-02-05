@@ -21,27 +21,24 @@ export class SMMSUpload extends React.Component {
     let config: CustomRequest = {
       name: "file",
       showUploadList: true,
-      action: "api/v2/upload",
+      action: "api/upload",
       multiple: false,
-      data: { format: "json" },
+      // data: { format: "json" },
       // headers: {
       //   Authorization: "$prefix $token"
       // },
       onStart(file: UploadFile) {
         console.log("statr");
 
-        _this.getBase64(file).then(res => {
-          let imgItem: UploadFile = file;
-          imgItem.thumbUrl = res as string;
-          imgItem.status = "uploading";
-          console.log(res);
-          _this.fileList = _.concat(_this.fileList, [imgItem]);
-          console.log(_this.fileList);
-          _this.setState({});
-        });
+        // _this.getBase64(file).then(res => {
+        //   let imgItem: UploadFile = file;
+        //   imgItem.thumbUrl = res as string;
+        //   imgItem.status = "uploading";
+        //   _this.fileList = _.concat(_this.fileList, [imgItem]);
+        //   _this.setState({});
+        // });
       },
       onSuccess(ret: SMMS_V2_PicReq, file: UploadFile) {
-        console.log(ret);
         if (ret.success) {
           _this.fileList[_this.fileList.length - 1].url = ret.data.url;
           _this.fileList[_this.fileList.length - 1].status = "success";
@@ -73,6 +70,8 @@ export class SMMSUpload extends React.Component {
           //     formData.append(key, exReq.data[key]);
           //     console.log(formData);
           //   });
+          console.log(exReq);
+
           formData.append("smfile", exReq.file);
         }
         // let axiosHeaders = exReq.headers;
