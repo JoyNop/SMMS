@@ -21,7 +21,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.4.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mousetrap": "^1.6.3",
     "prettier": "^1.18.2",
     "react": "^16.11.0",
